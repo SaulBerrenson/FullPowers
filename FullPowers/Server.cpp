@@ -261,9 +261,7 @@ BOOL Server::GetCurrentUsername(LPWSTR pwszCurrentUsername, LPDWORD pdwUsernameL
 	bRes = TRUE;
 
 cleanup:
-	if (pwszDomain)
 		free(pwszDomain);
-	if (pTokenUser)
 		free(pTokenUser);
 	if (hToken)
 		CloseHandle(hToken);
@@ -526,10 +524,10 @@ cleanup:
 		CloseHandle(hThreadTokenDup);
 	if (hThread)
 		CloseHandle(hThread);
-	if (pwszComspec)
+	
 		free(pwszComspec);
-	if (pwszSystemDir)
 		free(pwszSystemDir);
+	
 	if (pi.hProcess)
 		CloseHandle(pi.hProcess);
 	if (pi.hThread)
@@ -996,10 +994,10 @@ DWORD WINAPI DummyThread(LPVOID lpParam)
 	params = (PDUMMYTHREADDATA)lpParam;
 	
 	if (params->bVerbose)
+	{
 		wprintf(L"[*] Dummy thread called\n");
-
-	if (params->bVerbose)
-		wprintf(L"[*] Enabling all privileges...\n");
+		wprintf(L"[*] Enabling all privileges...\n");	
+	}
 
 	hThread = GetCurrentThread();
 
@@ -1031,8 +1029,9 @@ cleanup:
 		CloseHandle(pi.hProcess);
 	if (pi.hThread)
 		CloseHandle(pi.hThread);
-	if (pwszComspec)
+	
 		free(pwszComspec);
+	
 	if (hThreadToken)
 		CloseHandle(hThreadToken);
 	if (hThread)
