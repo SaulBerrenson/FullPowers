@@ -90,7 +90,7 @@ int wmain(int argc, wchar_t** argv)
         if (g_bVerbose)
             wprintf(L"[*] Target thread id is: %i\n", g_iThreadId);
 
-        Client client = Client(g_iThreadId);
+        Client client (g_iThreadId);
         client.SetVerbose(g_bVerbose);
         client.SetTimeout(TIMEOUT);
         client.Run();
@@ -100,7 +100,7 @@ int wmain(int argc, wchar_t** argv)
         if (g_bVerbose)
             wprintf(L"[*] Running in 'SERVER' mode.\n");
 
-        Server server = Server();
+        Server server;
         server.SetCustomCommand(g_pwszCustomCommand);
         server.SetExtendedPrivileges(g_bExtendedPriv);
         server.SetInteract(g_bInteract);
