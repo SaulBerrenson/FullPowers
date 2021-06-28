@@ -71,10 +71,10 @@ BOOL Server::Run()
 		return FALSE;
 
 	if (m_bVerbose)
+	{
 		wprintf(L"[*] Current user is: '%ls'\n", m_pwszCurrentUsername);
-
-	if (m_bVerbose)
 		wprintf(L"[*] Current executable is: '%ls'\n", m_pwszCurrentExecutable);
+	}
 
 	// 1) Create dummy thread in suspended state
 	if (!StartDummyThread())
